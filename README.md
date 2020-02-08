@@ -5,10 +5,10 @@ A React app with a button that fetches a random planet from ["The Star Wars API"
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Used dependencies
+## Dependencies
 
-- **Node.js:** 10.16.0
-- **npm:** 6.9.0
+- [Node](https://nodejs.org/en/) 10.16.0
+- [npm](https://www.npmjs.com/get-npm) 6.9.0
 
 
 ## Available Scripts
