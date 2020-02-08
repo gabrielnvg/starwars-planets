@@ -2,6 +2,15 @@
 
 body {
   font-family: $font-primary, Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (min-width: $breakpoint-md) {
+    font-size: 21px;
+    line-height: 25px;
+  }
 }
