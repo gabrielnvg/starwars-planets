@@ -1,1 +1,7 @@
 @import 'partials/imports';
+
+body {
+  font-family: $font-primary, Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
