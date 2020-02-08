@@ -1,4 +1,4 @@
-Fetches a random planet from ["The Star Wars API"](https://swapi.co) and displays its name, population, climate, terrain and quantity of films featured.
+A React app with a button that fetches a random planet from ["The Star Wars API"](https://swapi.co) and displays its name, population, climate, terrain and quantity of films featured.
 
 ---
 
