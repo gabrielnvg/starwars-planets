@@ -4,13 +4,23 @@ body {
   font-family: $font-primary, Arial, Helvetica, sans-serif;
   font-size: 17px;
   line-height: 28px;
+  letter-spacing: 4px;
+  color: $color-text;
   font-weight: bold;
   text-transform: uppercase;
+  text-align: center;
+  background-image: radial-gradient(113.56% 50% at 50% 50%, #0D567A 0%, #030D34 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: $breakpoint-lg) {
     font-size: 21px;
     line-height: 25px;
+    background-image: radial-gradient(49.06% 83.93% at 50% 54%, #093758 0%, #001630 100%);
+  }
+
+  .main-container {
+    padding: 0 20px;
   }
 }
