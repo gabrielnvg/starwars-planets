@@ -11,7 +11,7 @@ function Header() {
         <img className={styles.logo} src={svgLogo} alt="logo" />
         <div className={styles['text-container']}>
           <h1 className={styles.text}>Random Planets</h1>
-          <img className={styles.separator} src={svgHeaderSeparator} alt="separator" />
+          <img className={styles.separator} src={svgHeaderSeparator} alt="header separator" />
         </div>
       </div>
     </header>
