@@ -25,7 +25,7 @@ function PlanetInfo({ planet }) {
           <div className={styles['info-key']}>Climate:</div>
           <div className={styles['info-value']}>
             {planet.climate.map((climate, index) => (
-              <div className={styles['info-value__item']}>
+              <div key={`climate-${index}`} className={styles['info-value__item']}>
                 {`${climate}${index + 1 === planet.climate.length ? '' : ','}`}
               </div>
             ))}
@@ -42,7 +42,7 @@ function PlanetInfo({ planet }) {
           <div className={styles['info-key']}>Terrain:</div>
           <div className={styles['info-value']}>
             {planet.terrain.map((terrain, index) => (
-              <div className={styles['info-value__item']}>
+              <div key={`terrain-${index}`} className={styles['info-value__item']}>
                 {`${terrain}${index + 1 === planet.terrain.length ? '' : ','}`}
               </div>
             ))}
