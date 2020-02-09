@@ -1,0 +1,78 @@
+@import '../../assets/scss/partials/imports';
+
+.planet-info {
+  margin: 0 auto;
+
+  .name {
+    margin-top: 15px;
+    font-size: 36px;
+    line-height: 43px;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+
+    @media screen and (min-width: $breakpoint-lg) {
+      margin-top: 40px;
+      font-size: 50px;
+      line-height: 60px;
+    }
+  }
+
+  .info-container {
+    margin-top: 15px;
+    line-height: 22px;
+
+    @media screen and (min-width: $breakpoint-lg) {
+      margin-top: 25px;
+      line-height: 25px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+
+      &--featured-films {
+        display: block;
+      }
+
+      .info-key {
+        margin-right: 15px;
+        width: 50%;
+        color: $color-text-highlight;
+        text-align: right;
+      }
+
+      .info-value {
+        width: 50%;
+        text-align: left;
+
+        &__item:not(:first-of-type) {
+          margin-top: 5px;
+
+          @media screen and (min-width: $breakpoint-lg) {
+            margin-top: 8px;
+          }
+        }
+      }
+
+      .number-films-featured {
+        font-size: 25px;
+        color: $color-text-highlight;
+
+        @media screen and (min-width: $breakpoint-lg) {
+          font-size: 30px;
+        }
+      }
+    }
+
+    .info-separator {
+      margin: 10px 0;
+      max-width: 243px;
+      opacity: 0.25;
+
+      @media screen and (min-width: $breakpoint-lg) {
+        margin: 15px 0;
+        max-width: 294px;
+      }
+    }
+  }
+}
