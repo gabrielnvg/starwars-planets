@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './Header.module.scss';
 
-import imgLogo from '../../assets/images/svg/star-wars-logo.svg';
-import imgSeparator from '../../assets/images/svg/separator.svg';
+import svgLogo from '../../assets/images/svg/star-wars-logo.svg';
+import svgHeaderSeparator from '../../assets/images/svg/header-separator.svg';
 
 function Header() {
   return (
     <header className={styles.header}>
       <div className="main-container">
-        <img className={styles.logo} src={imgLogo} alt="logo" />
+        <img className={styles.logo} src={svgLogo} alt="logo" />
         <div className={styles['text-container']}>
           <h1 className={styles.text}>Random Planets</h1>
-          <img className={styles.separator} src={imgSeparator} alt="separator" />
+          <img className={styles.separator} src={svgHeaderSeparator} alt="separator" />
         </div>
       </div>
     </header>
