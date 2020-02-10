@@ -9,20 +9,31 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
-  background-image: url('../images/main-background.png'), radial-gradient(113.56% 50% at 50% 50%, #0D567A 0%, #030D34 100%);
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('../images/main-background.png'),
+    radial-gradient(113.56% 50% at 50% 50%, #0d567a 0%, #030d34 100%);
+  background-position: center;
+  background-attachment: fixed;
+  animation: move-background 90s ease-in-out infinite;
 
   @media screen and (min-width: $breakpoint-lg) {
     font-size: 21px;
     line-height: 25px;
-    background-image: url('../images/main-background.png'), radial-gradient(49.06% 83.93% at 50% 54%, #093758 0%, #001630 100%);
+    background-image: url('../images/main-background.png'),
+      radial-gradient(49.06% 83.93% at 50% 54%, #093758 0%, #001630 100%);
   }
 
   .main-container {
     padding: 0 20px;
+  }
+}
+
+@keyframes move-background {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: -1000px 500px;
   }
 }
