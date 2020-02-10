@@ -1,17 +1,12 @@
 @import '../../assets/scss/partials/imports';
 
 .header {
-  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, rgba(3, 13, 52, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
   mix-blend-mode: multiply;
-
-  @media screen and (min-width: $breakpoint-lg) {
-    margin-bottom: 40px;
-  }
 
   .logo {
     margin-top: 25px;

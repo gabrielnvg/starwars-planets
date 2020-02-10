@@ -46,12 +46,20 @@ function App() {
   return (
     <div>
       <Header />
-      {request.loading && <FetchLoading />}
-      {request.error && <FetchError />}
-      {!request.loading && !request.error && (
-        <PlanetInfo planet={formatPlanet(currentFetchedPlanet)} />
-      )}
-      <FetchButton text="Next" onClick={() => fetchRandomPlanet(28)} />
+      <div className="main-container">
+        <div className="central-container">
+          {request.loading && <FetchLoading />}
+          {request.error && <FetchError />}
+          {!request.loading && !request.error && (
+            <PlanetInfo planet={formatPlanet(currentFetchedPlanet)} />
+          )}
+        </div>
+        <FetchButton
+          text="Next"
+          onClick={() => fetchRandomPlanet(28)}
+          isDisabled={request.loading}
+        />
+      </div>
     </div>
   );
 }
