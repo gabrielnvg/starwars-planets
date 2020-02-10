@@ -51,7 +51,7 @@ function App() {
       <div className="main-container">
         <div className="central-container">
           {request.loading && <FetchLoading />}
-          {request.error && <FetchError />}
+          {(!request.loading && request.error) && <FetchError />}
           {!request.loading && !request.error && (
             <PlanetInfo planet={formatPlanet(currentFetchedPlanet)} />
           )}
