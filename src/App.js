@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useFetch from 'use-http';
+import randomizeIntWithinRange from './assets/js/utils/randomizeIntWithinRange';
 import formatPlanet from './assets/js/utils/formatPlanet';
 
 import Header from './components/Header/Header';
@@ -29,18 +30,18 @@ function App() {
   }
 
   useEffect(() => {
-    if (mounted.current) return;
+    if (mounted.current) {
+      return;
+    }
     mounted.current = true;
     fetchTotalPlanets();
-    fetchRandomPlanet('1');
   });
 
   useEffect(() => {
-    // console.log('currentFetchedPlanet', currentFetchedPlanet);
-  }, [currentFetchedPlanet]);
-
-  useEffect(() => {
-    // console.log('totalPlanets', totalPlanets);
+    if (!totalPlanets) {
+      return;
+    }
+    fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets));
   }, [totalPlanets]);
 
   return (
@@ -56,7 +57,7 @@ function App() {
         </div>
         <FetchButton
           text="Next"
-          onClick={() => fetchRandomPlanet(28)}
+          onClick={() => fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets))}
           isDisabled={request.loading}
         />
       </div>
