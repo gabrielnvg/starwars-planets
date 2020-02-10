@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import useFetch from 'use-http';
 import randomizeIntWithinRange from './assets/js/utils/randomizeIntWithinRange';
@@ -43,6 +42,7 @@ function App() {
       return;
     }
     fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPlanets]);
 
   return (
