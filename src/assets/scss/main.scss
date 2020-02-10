@@ -27,10 +27,25 @@ body {
   .main-container {
     padding: 0 20px;
   }
+
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    font-weight: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
 }
 
 @keyframes move-background {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0 0;
   }
   50% {
