@@ -1,3 +1,29 @@
+@import '../../assets//scss//partials/imports';
+
 .fetch-button {
-  //
+  .button-element {
+    margin-top: 40px;
+    width: 180px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    color: $color-text-highlight;
+    background: $color-background;
+    border: 2px solid $color-primary;
+    box-sizing: border-box;
+    box-shadow: 0px 28px 50px rgba(255, 232, 31, 0.11);
+    transition: opacity 0.3s ease-out;
+
+    @media screen and (min-width: $breakpoint-lg) {
+      margin-top: 60px;
+      width: 235px;
+      height: 55px;
+      font-size: 21px;
+      line-height: 25px;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
 }
