@@ -12,7 +12,7 @@ import FetchButton from './components/FetchButton/FetchButton';
 function App() {
   const [totalPlanets, setTotalPlanets] = useState(0);
   const [currentFetchedPlanet, setCurrentFetchedPlanet] = useState({});
-  const [request, response] = useFetch('https://swapi.co/api');
+  const [request, response] = useFetch('https://swapi.dev/api');
   const mounted = useRef(false);
 
   async function fetchTotalPlanets() {
