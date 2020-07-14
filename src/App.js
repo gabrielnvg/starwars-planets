@@ -16,14 +16,14 @@ function App() {
   const mounted = useRef(false);
 
   async function fetchTotalPlanets() {
-    const planets = await request.get('/planets');
+    const planets = await request.get('/planets/');
     if (response.ok) {
       setTotalPlanets(planets.count);
     }
   }
 
   async function fetchRandomPlanet(planetId) {
-    const planet = await request.get(`/planets/${planetId}`);
+    const planet = await request.get(`/planets/${planetId}/`);
     if (response.ok) {
       setCurrentFetchedPlanet(planet);
     }
