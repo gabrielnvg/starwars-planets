@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import useFetch from 'use-http';
 import randomizeIntWithinRange from './assets/js/utils/randomizeIntWithinRange';
 import formatPlanet from './assets/js/utils/formatPlanet';
@@ -12,54 +12,44 @@ import FetchButton from './components/FetchButton/FetchButton';
 function App() {
   const [totalPlanets, setTotalPlanets] = useState(0);
   const [currentFetchedPlanet, setCurrentFetchedPlanet] = useState({});
-  const [request, response] = useFetch('https://swapi.dev/api');
-  const mounted = useRef(false);
-
-  async function fetchTotalPlanets() {
-    const planets = await request.get('/planets/');
-    if (response.ok) {
-      setTotalPlanets(planets.count);
-    }
-  }
+  const { get, response, loading, error } = useFetch('https://swapi.dev/api');
+  const useMountEffect = func => useEffect(func, []);
 
   async function fetchRandomPlanet(planetId) {
-    const planet = await request.get(`/planets/${planetId}/`);
+    const planet = await get(`/planets/${planetId}/`);
     if (response.ok) {
       setCurrentFetchedPlanet(planet);
     }
   }
 
-  useEffect(() => {
-    if (mounted.current) {
-      return;
+  useMountEffect(() => {
+    async function initialFetches() {
+      const planets = await get('/planets/');
+      if (response.ok) {
+        setTotalPlanets(planets.count);
+        fetchRandomPlanet(randomizeIntWithinRange(1, planets.count));
+      }
     }
-    mounted.current = true;
-    fetchTotalPlanets();
+    initialFetches();
   });
-
-  useEffect(() => {
-    if (!totalPlanets) {
-      return;
-    }
-    fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalPlanets]);
 
   return (
     <div>
       <Header />
       <div className="main-container">
         <div className="central-container">
-          {request.loading && <FetchLoading />}
-          {(!request.loading && request.error) && <FetchError />}
-          {!request.loading && !request.error && (
+          {loading && <FetchLoading />}
+          {!loading && error && <FetchError />}
+          {!loading && !error && (
             <PlanetInfo planet={formatPlanet(currentFetchedPlanet)} />
           )}
         </div>
         <FetchButton
           text="Next"
-          onClick={() => fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets))}
-          isDisabled={request.loading}
+          onClick={() =>
+            fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets))
+          }
+          isDisabled={loading}
         />
       </div>
     </div>
