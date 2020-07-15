@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from '../../setupTests';
 import formatPlanet from '../../assets/js/utils/formatPlanet';
-import mockPlanet from '../../assets/js/mocks/mockPlanet';
+import mockPlanet from '../../../__mocks__/mockPlanet';
 
 import PlanetInfo from './PlanetInfo';
 
