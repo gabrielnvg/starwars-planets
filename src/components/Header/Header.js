@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './Header.module.scss';
 
 import svgLogo from '../../assets/images/svg/star-wars-logo.svg';
@@ -18,4 +18,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);
