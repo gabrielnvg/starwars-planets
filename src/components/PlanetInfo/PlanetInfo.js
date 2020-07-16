@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './PlanetInfo.module.scss';
 
@@ -85,4 +85,7 @@ PlanetInfo.propTypes = {
   }).isRequired,
 };
 
-export default PlanetInfo;
+const arePropsEqual = (prevProps, nextProps) =>
+  JSON.stringify(prevProps) === JSON.stringify(nextProps);
+
+export default memo(PlanetInfo, arePropsEqual);
