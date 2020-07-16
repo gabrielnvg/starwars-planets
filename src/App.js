@@ -22,6 +22,10 @@ function App() {
     }
   }
 
+  const handleButtonClick = () => {
+    fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets));
+  };
+
   useMountEffect(() => {
     async function initialFetches() {
       const planets = await get('/planets/');
@@ -46,9 +50,7 @@ function App() {
         </div>
         <FetchButton
           text="Next"
-          onClick={() =>
-            fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets))
-          }
+          onClick={handleButtonClick}
           isDisabled={loading}
         />
       </div>
