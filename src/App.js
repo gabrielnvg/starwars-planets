@@ -84,8 +84,11 @@ function App() {
       ...state,
       fetchStatus: { isLoading: true, hasError: false },
     });
-
-    fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets));
+    if (totalPlanets) {
+      fetchRandomPlanet(randomizeIntWithinRange(1, totalPlanets));
+    } else {
+      initialFetches();
+    }
   };
 
   return (
