@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import fetchWithTimeout from './assets/js/utils/fetchWithTimeout';
 import randomizeIntWithinRange from './assets/js/utils/randomizeIntWithinRange';
 import formatPlanet from './assets/js/utils/formatPlanet';
 
@@ -22,7 +23,7 @@ function App() {
 
   const apiPrefix = 'https://swapi.dev/api';
 
-  async function fetchRandomPlanet(planetId) {
+  const fetchRandomPlanet = async planetId => {
     if (planetId in state.fetchedPlanets) {
       setTimeout(
         () =>
@@ -34,7 +35,10 @@ function App() {
         300,
       );
     } else {
-      await fetch(`${apiPrefix}/planets/${planetId}/`)
+      await fetchWithTimeout({
+        url: `${apiPrefix}/planets/${planetId}/`,
+        timeout: 10000,
+      })
         .then(response => response.json())
         .then(planet => {
           setState({
@@ -54,23 +58,24 @@ function App() {
           });
         });
     }
-  }
+  };
+
+  const initialFetches = async () => {
+    await fetchWithTimeout({ url: `${apiPrefix}/planets/`, timeout: 10000 })
+      .then(response => response.json())
+      .then(planets => {
+        setTotalPlanets(planets.count);
+        fetchRandomPlanet(randomizeIntWithinRange(1, planets.count));
+      })
+      .catch(() => {
+        setState({
+          ...state,
+          fetchStatus: { isLoading: false, hasError: true },
+        });
+      });
+  };
 
   useMountEffect(() => {
-    async function initialFetches() {
-      await fetch(`${apiPrefix}/planets/`)
-        .then(response => response.json())
-        .then(planets => {
-          setTotalPlanets(planets.count);
-          fetchRandomPlanet(randomizeIntWithinRange(1, planets.count));
-        })
-        .catch(() => {
-          setState({
-            ...state,
-            fetchStatus: { isLoading: false, hasError: true },
-          });
-        });
-    }
     initialFetches();
   });
 
