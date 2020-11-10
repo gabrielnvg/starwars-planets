@@ -1,4 +1,4 @@
-const fetchWithTimeout = ({ url, options, timeout = 60000 }) =>
+const fetchWithTimeout = ({ url, options = {}, timeout = 60000 }) =>
   Promise.race([
     fetch(url, options),
     new Promise((_, reject) =>
